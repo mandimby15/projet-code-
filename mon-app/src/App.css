@@ -1,0 +1,37 @@
+/* App.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #6bacec;  /* Fond gris clair (cohérent avec Bootstrap) */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
+    min-height: 100vh;
+  }
+  
+  /* Style pour le contenu principal (ajustez selon vos besoins) */
+  .main-content {
+    padding: 20px;
+    margin-top: 20px;  /* Espace sous la Navbar */
+  }
+  
+  /* Override Bootstrap si nécessaire */
+  .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Ombre légère */
+  }
+  
+  /* Style pour un bouton "Reset" (comme sur la capture) */
+  .reset-btn {
+    background-color: #dc3545;  /* Rouge Bootstrap (danger) */
+    color: rgb(25, 201, 245);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 10px;
+  }
+  
+  .reset-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.02);
+  }

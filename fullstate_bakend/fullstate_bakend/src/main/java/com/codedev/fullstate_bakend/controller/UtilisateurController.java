@@ -2,6 +2,7 @@ package com.codedev.fullstate_bakend.controller;
 
 import com.codedev.fullstate_bakend.model.Utilisateur;
 import com.codedev.fullstate_bakend.repository.RepositoryUtilisateur;
+import com.codedev.fullstate_bakend.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,12 @@ public class UtilisateurController {
 
     @Autowired
     private RepositoryUtilisateur repositoryUtilisateur;
+
+
+    @Autowired
+    private UtilisateurService utilisateurService;
+
+
 
     // GET pour récupérer tous les utilisateurs
     @GetMapping
@@ -57,5 +64,11 @@ public class UtilisateurController {
                     return ResponseEntity.ok(updatedUtilisateur);
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Utilisateur loginRequest) {
+        return utilisateurService.authentifier(loginRequest.getEmail(), loginRequest.getMotDePasse())
+                .map(utilisateur -> ResponseEntity.ok().body("Connexion réussie"))
+                .orElse(ResponseEntity.status(401).body("Email ou mot de passe invalide"));
     }
 }
